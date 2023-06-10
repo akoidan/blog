@@ -38,7 +38,7 @@ my $dbh = DBI->connect_cached( "DBI:mysql:host=10.2.0.12;", $creds->{username}, 
 
 You probably should wait a few minutes till Linode dashboard refreshes the data.
 
-![longview mysql tab](/longview-mysql-tab.png "Information about ip address should be here")
+![longview mysql tab](/images/connect-linode-longview-kubernetes-mysql-pod/longview-mysql-tab.png "Information about ip address should be here")
 
 
 This is a good sign, all is left is to setup the access. Get into your mysql console inside the docker and create a new user.
@@ -53,6 +53,6 @@ Password for this user you should get from vim `/etc/linode/longview.d/MySQL.con
 
 If you done all correctly, restart the longview process again and check the Dashboard
 
-![Mysql longview graph](/mysql-longview-graph.webp "Magic isn't it? ")
+![Mysql longview graph](/images/connect-linode-longview-kubernetes-mysql-pod/mysql-longview-graph.webp "Magic isn't it? ")
 
 
