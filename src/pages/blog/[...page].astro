@@ -1,10 +1,10 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import ArticleCard from "@components/ArticleCard.astro";
-import Pagination from "@components/Pagination.astro";
-import { Frontmatter, sortDateDescending } from "src/misc";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ArticleCard from "@/components/ArticleCard.astro";
+import Pagination from "@/components/Pagination.astro";
+import { Frontmatter, sortDateDescending } from "@/misc";
 import { MarkdownInstance, Page } from "astro";
-import config from "src/config";
+import config from "@/config";
 
 export interface Props {
   page: Page<MarkdownInstance<Frontmatter>>,

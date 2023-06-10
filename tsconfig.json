@@ -14,8 +14,7 @@
     // Using aliases for paths
     "baseUrl": ".",
     "paths": {
-      "@components/*":["src/components/*"],
-      "@layouts/*":["src/layouts/*"],
+      "@/*":["./src/*"],
     },
   }
 }

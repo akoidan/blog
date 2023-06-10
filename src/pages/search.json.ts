@@ -1,5 +1,5 @@
 import { MarkdownInstance } from "astro";
-import { Frontmatter } from "src/misc";
+import { Frontmatter } from "@/misc";
 
 export async function get() {
   const allPosts = import.meta.glob<MarkdownInstance<Frontmatter>>("./blog/articles/*.md", { eager: true }); // Vite
