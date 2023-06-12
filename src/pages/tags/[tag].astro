@@ -1,0 +1,49 @@
+---
+import {CollectionEntry, getCollection} from "astro:content";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+  tag: string;
+}
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  const tags = getUniqueTags(posts);
+
+  return tags.map(tag => {
+    return {
+      params: {tag},
+      props: {tag},
+    };
+  });
+}
+
+import type {CollectionEntry} from "astro:content";
+import BaseHead from "@/organisms/BaseHead.astro";
+import MainLayout from "@/templates/MainLayout.astro";
+import PostCard from "@/molecules/PostCard.astro";
+import {getPostsByTag} from "@/utils/tags";
+import {getUniqueTags} from "../../utils/tags";
+
+const {tag} = Astro.props;
+
+const posts = await getCollection("blog", ({data}) => !data.draft);
+
+const tagPosts = getPostsByTag(posts, tag);
+
+console.log(JSON.stringify(tagPosts))
+---
+
+<MainLayout>
+    <BaseHead slot="head" title={'Posts'} description={'All posts are here'}/>
+    <section slot="body" class="prose mb-28 max-w-3xl prose-img:border-0">
+        <h1 class="text-2xl tracking-wider sm:text-3xl">{tag}</h1>
+      {
+        tagPosts.map(({data}) => (
+                <PostCard {...data}/>
+        ))
+      }
+    </section>
+</MainLayout>
+

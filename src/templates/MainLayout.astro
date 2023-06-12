@@ -1,0 +1,31 @@
+---
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import config from "@/config.json";
+import Header from "@/organisms/Header.astro";
+import "@/styles/global.sass";
+import "@/styles/base.css";
+import Footer from "@/organisms/Footer.astro";
+
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <slot name="head"/>
+  <script >
+    import {setCurrentTheme} from "@/utils/theme";
+    setCurrentTheme();
+  </script>
+</head>
+<body>
+<Header title={config.author} />
+<main>
+  <slot name="body"/>
+</main>
+<Footer/>
+</body>
+</html>
+<style lang="sass">
+  main
+    margin-top: 16px
+</style>

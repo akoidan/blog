@@ -1,0 +1,27 @@
+---
+import Icon from "@/atoms/Icon.astro"
+import Github from "~/social/github.svg?raw";
+import Stackoverflow from "~/social/stackoverflow.svg?raw";
+import Linkedin from "~/social/linkedin.svg?raw";
+import config from "@/config.json"
+---
+<div class="icons-holder">
+  <Icon href={config.github} icon={Github}/>
+  <Icon href={config.stackoverflow} icon={Stackoverflow}/>
+  <Icon href={config.linkedin} icon={Linkedin}/>
+</div>
+
+<style lang="sass">
+  .icons-holder
+    :global(svg)
+        fill: transparent
+        stroke: currentColor
+        stroke-width: 2
+        opacity: .9
+    :global(a):hover
+        --tw-text-opacity: 1
+        color: rgba(var(--color-accent),var(--tw-text-opacity))
+        :global(svg)
+          transform: rotate(12deg)
+
+</style>

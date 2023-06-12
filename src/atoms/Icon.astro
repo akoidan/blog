@@ -1,0 +1,11 @@
+---
+const {href, icon} = Astro.props;
+
+export interface Props {
+  href: string;
+  icon: string;
+}
+
+---
+<a href={href}><Fragment set:html={icon}/></a>
+

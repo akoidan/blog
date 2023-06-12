@@ -1,0 +1,21 @@
+---
+import BaseHead from '@/organisms/BaseHead.astro';
+import { getCollection } from 'astro:content';
+import MainLayout from "@/templates/MainLayout.astro";
+import PostCard from "@/molecules/PostCard.astro";
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
+);
+---
+
+<MainLayout>
+  <BaseHead slot="head" title={'Posts'} description={'All posts are here'} />
+  <section slot="body">
+    <ul>
+      {posts.map((post) => (
+        <PostCard slug={post.slug} {...post.data}/>
+      ))}
+    </ul>
+  </section>
+</MainLayout>

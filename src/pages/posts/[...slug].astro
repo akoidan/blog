@@ -1,0 +1,25 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+import BaseHead from "@/organisms/BaseHead.astro";
+import MainLayout from "@/templates/MainLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<'posts'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<MainLayout>
+  <BaseHead slot="head" title={'Posts'} description={'All posts are here'} />
+  <section slot="body" class="prose mb-28 max-w-3xl prose-img:border-0">
+    <h1 class="text-2xl tracking-wider sm:text-3xl">{post.data.title}</h1>
+    <Content/>
+  </section>
+</MainLayout>

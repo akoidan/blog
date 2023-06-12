@@ -1,0 +1,10 @@
+---
+import BaseHead from "@/organisms/BaseHead.astro";
+import config from "@/config.json";
+import MainLayout from "@/templates/MainLayout.astro"
+import Intro from "@/organisms/Intro.astro";
+---
+<MainLayout>
+  <BaseHead slot="head" title={config.author} description={'Blog'} />
+  <Intro slot="body"/>
+</MainLayout>

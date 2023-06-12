@@ -1,0 +1,34 @@
+---
+import config from "@/config.json"
+import myPhoto from "~/my-photo.png";
+import { Picture } from '@astrojs/image/components';
+
+---
+<div class="holder">
+    <Picture src={myPhoto}  widths={[250, 500]} />
+    <div>
+        <h1>
+            Hi there, I'm <span>{config.author}</span>
+        </h1>
+        <br/>
+        <p>
+            Drawing from 15 years of coding experience, I have acquired a
+            wealth of knowledge in over 20 programming languages and an
+            extensive range of frameworks. This blog encompasses a diverse
+            range of topics, including Linux, DevOps, software design
+            patterns, as well as insights into different approaches for
+            developing desktop, mobile, and web applications.
+        </p>
+    </div>
+</div>
+<style lang="sass">
+  .holder
+    display: flex
+    gap: 20px
+    flex-direction: row
+    :global(img)
+      border-radius: 4px
+      max-width: 250px
+  p
+    text-align: justify
+</style>

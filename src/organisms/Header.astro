@@ -1,0 +1,57 @@
+---
+import Search from "~/nav/search.svg?raw";
+import Moon from "~/theme/moon.svg?raw";
+import Sun from "~/theme/sun.svg?raw";
+---
+<header>
+  <nav>
+    <a class="home" href="/">AK Blog</a>
+    <a href="/posts">Posts</a>
+    <a href="/tags">Tags</a>
+    <a href="https://akoidan.com">Portfolio</a>
+  </nav>
+  <div class="icons">
+    <div class="search"><Fragment set:html={Search}/></div>
+  <div class="switcher-changer">
+    <div class="moon"><Fragment set:html={Moon}/></div>
+    <div class="sun"><Fragment set:html={Sun}/></div>
+  </div>
+  </div>
+</header>
+<script>
+  import {switchTheme} from "@/utils/theme";
+  document.querySelector('.switcher-changer').addEventListener('click', switchTheme)
+</script>
+<style lang="sass">
+  :global(html[data-theme="dark"]) .moon
+    display: none
+  :global(html[data-theme="light"]) .sun
+    display: none
+  header
+    border-bottom: 1px solid rgba(var(--color-border),var(--tw-border-opacity))
+    display: flex
+    gap: 32px
+    padding: 32px 0
+  .home
+    margin-right: auto
+  nav
+    flex: 1
+    font-weight: 500
+    display: flex
+    gap: 32px
+    margin: 0
+
+    a
+      cursor: pointer
+      &:hover
+        color: rgba(var(--color-accent),var(--tw-text-opacity))
+  .icons
+    display: flex
+    gap: 32px
+  header :global(svg)
+    cursor: pointer
+    fill: rgb(var(--color-text-base))
+    &:hover
+      transform: rotate(12deg)
+      fill: rgba(var(--color-accent),var(--tw-text-opacity))
+</style>
