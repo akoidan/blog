@@ -3,10 +3,17 @@
   "compilerOptions": {
     "strictNullChecks": true,
     "baseUrl": ".",
-    "types": ["@astrojs/image/client"],
+    "types": [
+      "@astrojs/image/client"
+    ],
     "paths": {
-      "@/*": ["src/*"],
-      "~/*": ["public/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "~/*": [
+        "public/*"
+      ]
     },
+    "jsx": "preserve"
   }
 }

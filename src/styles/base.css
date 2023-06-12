@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
 
 @layer base {
   :root,
@@ -21,14 +22,6 @@
     --color-card-muted: 138, 51, 2;
     --color-border: 171, 75, 8;
     --tw-border-opacity: 1;
-  }
-  #sun-svg,
-  html[data-theme="dark"] #moon-svg {
-    display: none;
-  }
-  #moon-svg,
-  html[data-theme="dark"] #sun-svg {
-    display: block;
   }
   body {
     @apply flex min-h-screen flex-col bg-skin-fill font-mono text-skin-base
@@ -90,6 +83,9 @@
   }
   .prose h2#table-of-contents + p {
     @apply hidden;
+  }
+  .prose img {
+    max-width: 100%;
   }
 
   /* ===== scrollbar ===== */

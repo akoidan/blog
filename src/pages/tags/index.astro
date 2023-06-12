@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import BaseHead from "@/organisms/BaseHead.astro";
 import MainLayout from "@/templates/MainLayout.astro";
 import {getUniqueTags} from "@/utils/tags";
-import Tag from "@/molecules/Tag.astro";
+import Tag from "../../molecules/Tag.vue";
 
 const posts = await getCollection("blog");
 

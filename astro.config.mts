@@ -4,6 +4,8 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
 
+import vue from "@astrojs/vue";
+
 // https://astro.build/config
 export default defineConfig({
   site: config.domain,
@@ -17,5 +19,5 @@ export default defineConfig({
     config: {
       applyBaseStyles: false
     }
-  }), image()]
+  }), image(), vue()]
 });

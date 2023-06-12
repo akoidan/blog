@@ -9,13 +9,19 @@ import Sun from "~/theme/sun.svg?raw";
     <a href="/posts">Posts</a>
     <a href="/tags">Tags</a>
     <a href="https://akoidan.com">Portfolio</a>
+    <a class="search" href="/search">
+      <Fragment set:html={Search}/>
+    </a>
   </nav>
   <div class="icons">
-    <div class="search"><Fragment set:html={Search}/></div>
-  <div class="switcher-changer">
-    <div class="moon"><Fragment set:html={Moon}/></div>
-    <div class="sun"><Fragment set:html={Sun}/></div>
-  </div>
+    <div class="switcher-changer">
+      <div class="moon">
+        <Fragment set:html={Moon}/>
+      </div>
+      <div class="sun">
+        <Fragment set:html={Sun}/>
+      </div>
+    </div>
   </div>
 </header>
 <script>

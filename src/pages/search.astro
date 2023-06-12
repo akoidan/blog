@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+
+import MainLayout from "@/templates/MainLayout.astro";
+import config from "@/config.json"
+import BaseHead from "@/organisms/BaseHead.astro";
+import Search from "@/organisms/Search.vue"
+// Retrieve all articles
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+
+// List of items to search in
+const searchList = posts.map(({ data }) => ({
+  title: data.title,
+  description: data.description,
+  tags: data.tags,
+  date: data.date,
+}));
+console.log(JSON.stringify(searchList))
+---
+<MainLayout>
+  <BaseHead slot="head" title={`Search ${config.author} blog`} />
+  <Search client:load searchList={searchList} slot="body" />
+</MainLayout>
