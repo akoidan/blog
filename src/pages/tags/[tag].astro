@@ -7,6 +7,7 @@ import MainLayout from "@/templates/MainLayout.astro";
 import BlogCard from "@/molecules/BlogCard.vue";
 import {getPostsByTag} from "@/utils/tags";
 import {getUniqueTags} from "@/utils/tags";
+import config from "@/config.json"
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -34,7 +35,7 @@ const tagPosts = getPostsByTag(posts, tag);
 ---
 
 <MainLayout>
-    <BaseHead slot="head" title={'Posts'} description={'All posts are here'}/>
+    <BaseHead slot="head" title={`${config.author} posts by tag ${tag}`} description={`All ${config.author} related to ${tag}`}/>
     <ul slot="body">
       {
         tagPosts.map((data) => (

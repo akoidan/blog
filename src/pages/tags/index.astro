@@ -4,14 +4,16 @@ import BaseHead from "@/organisms/BaseHead.astro";
 import MainLayout from "@/templates/MainLayout.astro";
 import {getUniqueTags} from "@/utils/tags";
 import Tag from "@/molecules/Tag.vue";
+import config from "../../config.json";
 
 const posts = await getCollection("blog");
 
 let tags = getUniqueTags(posts);
+const tagsStr = tags.join(", ");
 ---
 
 <MainLayout>
-    <BaseHead slot="head" title={'Tags'} description={'Posts by tags'} />
+    <BaseHead slot="head" title={`${config.author} posts by tags`} description={`${config.author} posts by tags ${tagsStr}`}  />
     <section slot="body">
         <ul>
           {tags.map(tag => <Tag name={tag} />)}

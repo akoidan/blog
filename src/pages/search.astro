@@ -18,6 +18,6 @@ const searchList = posts.map(( data ) => ({
 }));
 ---
 <MainLayout>
-  <BaseHead slot="head" title={`Search ${config.author} blog`} />
+  <BaseHead slot="head"  title={`${config.author} search blog`} description={`This page allows you to search blogs by tags, title, description}`}  />
   <Search client:load searchList={searchList} slot="body" />
 </MainLayout>

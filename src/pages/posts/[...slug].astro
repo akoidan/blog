@@ -17,7 +17,7 @@ const { Content } = await post.render();
 ---
 
 <MainLayout>
-  <BaseHead slot="head" title={'Posts'} description={'All posts are here'} />
+  <BaseHead slot="head" title={post.data.title} description={post.data.description} />
   <section slot="body" class="prose mb-28 max-w-3xl prose-img:border-0">
     <h1>{post.data.title}</h1>
     <p>{post.data.description}</p>

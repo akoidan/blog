@@ -3,6 +3,9 @@ import BaseHead from '@/organisms/BaseHead.astro';
 import { getCollection } from 'astro:content';
 import MainLayout from "@/templates/MainLayout.astro";
 import BlogCard from "@/molecules/BlogCard.vue";
+import config from "../../config.json";
+import {g} from "../../../dist/_astro/runtime-dom.esm-bundler.d148e6e4";
+import {getUniqueTags} from "../../utils/tags";
 
 const posts = (await getCollection('blog')).filter(p => !p.data.draft).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -10,7 +13,7 @@ const posts = (await getCollection('blog')).filter(p => !p.data.draft).sort(
 ---
 
 <MainLayout>
-  <BaseHead slot="head" title={'Posts'} description={'All posts are here'} />
+  <BaseHead slot="head"  title={`${config.author} posts`} description={`All ${config.author} posts`} />
   <section slot="body">
     <ul>
       {posts.map((post) => (

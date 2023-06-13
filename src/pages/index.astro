@@ -5,6 +5,6 @@ import MainLayout from "@/templates/MainLayout.astro"
 import Intro from "@/organisms/Intro.astro";
 ---
 <MainLayout>
-  <BaseHead slot="head" title={config.author} description={'Blog'} />
+  <BaseHead slot="head" title={`${config.author} blog`} description="This blog encompasses a diverse range of topics, including Linux, DevOps, software design patterns, as well as insights into different approaches for developing desktop, mobile, and web applications." />
   <Intro slot="body"/>
 </MainLayout>
