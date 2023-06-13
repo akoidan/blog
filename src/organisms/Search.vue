@@ -20,7 +20,6 @@ import { computed } from 'vue'
 import BlogCard from "@/molecules/BlogCard.vue"
 
 const {searchList} = defineProps(['searchList'])
-console.log(searchList)
 const value = ref("")
 const results = computed(() => searchList.filter(si => [si.title, si.description, ...si.tags].find(e => value.value && e.toLowerCase().includes(value.value.toLocaleLowerCase()))))
 </script>

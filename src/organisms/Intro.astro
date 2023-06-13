@@ -5,7 +5,7 @@ import { Picture } from '@astrojs/image/components';
 
 ---
 <div class="flex flex-col sm:flex-row gap-4 holder">
-  <Picture src={myPhoto}  widths={[300, 700]} class:list="w-full" />
+  <Picture src={myPhoto}  widths={[300, 700]} class:list="w-full" alt={`${config.author} photo`}/>
   <div class="text">
     <h1>
       Hi there, I'm <span>{config.author}</span>
