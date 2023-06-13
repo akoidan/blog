@@ -2,8 +2,17 @@
 import config from "@/config.json"
 import myPhoto from "~/my-photo.png";
 import { Picture } from '@astrojs/image/components';
+import Hr from "../atoms/Hr.astro";
+import BlogCard from "../molecules/BlogCard.vue";
+import { getCollection } from 'astro:content';
+import config from "@/config.json";
 
+const posts = (await getCollection('blog')).filter(p => p.data.tags.includes('featured')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 ---
+<div>
+
 <div class="flex flex-col sm:flex-row gap-4 holder">
   <Picture src={myPhoto}  widths={[300, 700]} class:list="w-full" alt={`${config.author} photo`}/>
   <div class="text">
@@ -21,7 +30,18 @@ import { Picture } from '@astrojs/image/components';
     </p>
   </div>
 </div>
+  <Hr/>
+  <h2>Featured</h2>
+  <ul>
+    {posts.map((post) => (
+      <BlogCard slug={post.slug} {...post.data}/>
+    ))}
+  </ul>
+</div>
 <style lang="sass">
+
+  h2
+    @apply text-2xl font-semibold tracking-wide
   .text
     text-align: justify
     width: 100%

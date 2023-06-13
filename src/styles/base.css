@@ -106,6 +106,7 @@
   /* Handle */
   ::-webkit-scrollbar-thumb {
     @apply bg-skin-card;
+    border-radius: 10px;
   }
 
   /* Handle on hover */
