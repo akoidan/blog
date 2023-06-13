@@ -2,18 +2,21 @@
 import Search from "~/nav/search.svg?raw";
 import Moon from "~/theme/moon.svg?raw";
 import Sun from "~/theme/sun.svg?raw";
+import Hamburger from "~/nav/hamburger.svg?raw";
+
+const currentPath = Astro.url.pathname;
 ---
-<header>
-  <nav>
-    <a class="home" href="/">AK Blog</a>
-    <a href="/posts">Posts</a>
-    <a href="/tags">Tags</a>
+<header class="header" id="header">
+  <nav class="navigation">
+    <a class="home" href="/" class:list={[{ active: currentPath === '/' }]}>AK Blog</a>
+    <a href="/posts" class:list={[{ active: currentPath === '/posts' }]}>Posts</a>
+    <a href="/tags" class:list={[{ active: currentPath === '/tags' }]}>Tags</a>
     <a href="https://akoidan.com">Portfolio</a>
-    <a class="search" href="/search" title="Search">
-      <Fragment set:html={Search}/>
-    </a>
   </nav>
   <div class="icons">
+    <a class="search" href="/search" title="Search" class:list={[{ active: currentPath === '/search' }]}>
+      <Fragment set:html={Search}/>
+    </a>
     <div class="switcher-changer">
       <div class="moon">
         <Fragment set:html={Moon}/>
@@ -23,12 +26,56 @@ import Sun from "~/theme/sun.svg?raw";
       </div>
     </div>
   </div>
+  <button class="hamburger">
+    <Fragment set:html={Hamburger}/>
+  </button>
 </header>
 <script>
   import {switchTheme} from "@/utils/theme";
   document.querySelector('.switcher-changer').addEventListener('click', switchTheme)
+  const header = document.getElementById('header')
+  document.querySelector('.hamburger').addEventListener('click', () => {
+    header.classList.toggle('open');
+  });
 </script>
 <style lang="sass">
+  $screen-collapse-size: 580px
+  .switcher-changer
+    display: flex
+    flex-direction: row
+    font-weight: 500
+    &:hover
+     color: rgba(var(--color-accent),var(--tw-text-opacity))
+  .header
+    &.open
+      :global(.line)
+         display: none
+      button
+        margin-left: auto
+      @media screen and (max-width: $screen-collapse-size)
+        flex-direction: column-reverse
+        gap: 8px
+        .icons
+          margin-left: 0
+          display: flex
+          flex-direction: row
+          justify-content: center
+        .navigation
+          display: flex
+          flex-direction: column
+          background-color: rgba(var(--color-fill), var(--tw-bg-opacity))
+    &:not(.open)
+      @media screen and (max-width: $screen-collapse-size)
+        .navigation
+          display: none
+      :global(.close)
+        display: none
+  .hamburger
+    display: flex
+    &:hover :global(svg)
+      fill: rgb(var(--color-accent))
+    @media screen and (min-width: $screen-collapse-size)
+      display: none
   :global(html[data-theme="dark"]) .moon
     display: none
   :global(html[data-theme="light"]) .sun
@@ -49,9 +96,10 @@ import Sun from "~/theme/sun.svg?raw";
 
     a
       cursor: pointer
-      &:hover
+      &:hover, &.active
         color: rgba(var(--color-accent),var(--tw-text-opacity))
   .icons
+    margin-left: auto
     display: flex
     gap: 32px
   header :global(svg)

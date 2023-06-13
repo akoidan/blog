@@ -1,7 +1,6 @@
 ---
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/500.css';
-import config from "@/config.json";
 import Header from "@/organisms/Header.astro";
 import "@/styles/global.sass";
 import "@/styles/base.css";
@@ -18,7 +17,7 @@ import Footer from "@/organisms/Footer.astro";
   </script>
 </head>
 <body>
-<Header title={config.author} />
+<Header/>
 <main>
   <slot name="body"/>
 </main>
