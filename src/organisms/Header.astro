@@ -47,6 +47,9 @@ const currentPath = Astro.url.pathname;
     &:hover
      color: rgba(var(--color-accent),var(--tw-text-opacity))
   .header
+    position: sticky
+    top: 0
+    background-color: rgba(var(--color-fill), var(--tw-bg-opacity))
     &.open
       :global(.line)
          display: none
@@ -72,8 +75,6 @@ const currentPath = Astro.url.pathname;
         display: none
   .hamburger
     display: flex
-    &:hover :global(svg)
-      fill: rgb(var(--color-accent))
     @media screen and (min-width: $screen-collapse-size)
       display: none
   :global(html[data-theme="dark"]) .moon
@@ -105,7 +106,9 @@ const currentPath = Astro.url.pathname;
   header :global(svg)
     cursor: pointer
     fill: rgb(var(--color-text-base))
-    &:hover
-      transform: rotate(12deg)
-      fill: rgba(var(--color-accent),var(--tw-text-opacity))
+  header
+    .search, .switcher-changer
+      :global(svg):hover
+        transform: rotate(12deg)
+        fill: rgba(var(--color-accent),var(--tw-text-opacity))
 </style>
