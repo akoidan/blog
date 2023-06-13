@@ -2,7 +2,7 @@
 title: "Music"
 description: "Good coding music"
 date: "24 May 2022"
-heroImage: "/connect-linode-longview-kubernetes-mysql-pod-graph.webp"
+draft: true
 tags: 
  - music
  - coding

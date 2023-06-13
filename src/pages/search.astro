@@ -9,13 +9,13 @@ import Search from "@/organisms/Search.vue"
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 
 // List of items to search in
-const searchList = posts.map(({ data }) => ({
-  title: data.title,
-  description: data.description,
-  tags: data.tags,
-  date: data.date,
+const searchList = posts.map(( data ) => ({
+  title: data.data.title,
+  description: data.data.description,
+  tags: data.data.tags,
+  date: data.data.date,
+  slug: data.slug,
 }));
-console.log(JSON.stringify(searchList))
 ---
 <MainLayout>
   <BaseHead slot="head" title={`Search ${config.author} blog`} />

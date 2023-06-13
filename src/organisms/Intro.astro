@@ -2,7 +2,6 @@
 import config from "@/config.json"
 import myPhoto from "~/my-photo.png";
 import { Picture } from '@astrojs/image/components';
-import SocialIcons from "../molecules/SocialIcons.astro";
 
 ---
 <div class="flex flex-col sm:flex-row gap-4 holder">
@@ -22,15 +21,14 @@ import SocialIcons from "../molecules/SocialIcons.astro";
     </p>
   </div>
 </div>
-<style>
-  .text {
-    text-align: justify;
-    width: 100%;
-  }
-  .holder {
-    margin-bottom: 10px;
-  }
-  .holder :global(img) {
+<style lang="sass">
+  .text
+    text-align: justify
+    width: 100%
+
+  .holder
+    margin-bottom: 10px
+
+  .holder :global(img)
     border-radius: 4px
-  }
 </style>

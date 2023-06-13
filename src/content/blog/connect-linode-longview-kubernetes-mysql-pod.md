@@ -2,7 +2,6 @@
 title: "Linode MySql Monitoring"
 description: "Connect Linode LongView to Kubernetes MySQL inside of a Pod"
 date: "24 May 2022"
-heroImage: "/connect-linode-longview-kubernetes-mysql-pod-graph.webp"
 tags:
  - mysql
  - longview

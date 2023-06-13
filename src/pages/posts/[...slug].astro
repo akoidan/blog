@@ -2,7 +2,7 @@
 import { CollectionEntry, getCollection } from 'astro:content';
 import BaseHead from "@/organisms/BaseHead.astro";
 import MainLayout from "@/templates/MainLayout.astro";
-
+import Hr from "@/atoms/Hr.astro"
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map((post) => ({
@@ -19,7 +19,9 @@ const { Content } = await post.render();
 <MainLayout>
   <BaseHead slot="head" title={'Posts'} description={'All posts are here'} />
   <section slot="body" class="prose mb-28 max-w-3xl prose-img:border-0">
-    <h1 class="text-2xl tracking-wider sm:text-3xl">{post.data.title}</h1>
+    <h1>{post.data.title}</h1>
+    <p>{post.data.description}</p>
+    <Hr/>
     <Content/>
   </section>
 </MainLayout>

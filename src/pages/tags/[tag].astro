@@ -6,7 +6,7 @@ import BaseHead from "@/organisms/BaseHead.astro";
 import MainLayout from "@/templates/MainLayout.astro";
 import BlogCard from "@/molecules/BlogCard.vue";
 import {getPostsByTag} from "@/utils/tags";
-import {getUniqueTags} from "../../utils/tags";
+import {getUniqueTags} from "@/utils/tags";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -37,8 +37,8 @@ const tagPosts = getPostsByTag(posts, tag);
     <BaseHead slot="head" title={'Posts'} description={'All posts are here'}/>
     <ul slot="body">
       {
-        tagPosts.map(({data}) => (
-            <BlogCard {...data}/>
+        tagPosts.map((data) => (
+            <BlogCard slug={data.slug}  {...data.data}/>
         ))
       }
     </ul>

@@ -2,7 +2,7 @@
 title: "Best pracices for frontend development"
 description: "Stop putting classes to html, css should be within its block"
 date: "24 May 2022"
-heroImage: "/connect-linode-longview-kubernetes-mysql-pod-graph.webp"
+draft: true
 tags: 
  - patterns 
  - ecosystem

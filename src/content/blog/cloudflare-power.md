@@ -2,7 +2,7 @@
 title: "Cloudflare ecosystem"
 description: "Switch from nasty bills of AWS/GCP"
 date: "24 May 2022"
-heroImage: "/connect-linode-longview-kubernetes-mysql-pod-graph.webp"
+draft: true
 tags: 
  - cloudflare
 ---
