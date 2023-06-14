@@ -9,12 +9,12 @@ const currentPath = Astro.url.pathname;
 <header class="header" id="header">
   <nav class="navigation">
     <a class="home" href="/" class:list={[{ active: currentPath === '/' }]}>AK Blog</a>
-    <a href="/posts" class:list={[{ active: currentPath === '/posts' }]}>Posts</a>
-    <a href="/tags" class:list={[{ active: currentPath === '/tags' }]}>Tags</a>
+    <a href="/posts" class:list={[{ active: currentPath.startsWith('/posts') }]}>Posts</a>
+    <a href="/tags" class:list={[{ active: currentPath.startsWith('/tags') }]}>Tags</a>
     <a href="https://akoidan.com">Portfolio</a>
   </nav>
   <div class="icons">
-    <a class="search" href="/search" title="Search" class:list={[{ active: currentPath === '/search' }]}>
+    <a class="search" href="/search" title="Search" class:list={[{ active: currentPath.startsWith('/search') }]}>
       <Fragment set:html={Search}/>
     </a>
     <div class="switcher-changer">
