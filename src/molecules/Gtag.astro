@@ -1,0 +1,11 @@
+---
+import config from "@/config.json"
+const url = `https://www.googletagmanager.com/gtag/js?id=${config.gtagId}`
+---
+<script async src={url} type="text/partytown"></script>
+<script type="text/partytown" define:vars={{ gtagId: config.gtagId }}>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', gtagId);
+</script>

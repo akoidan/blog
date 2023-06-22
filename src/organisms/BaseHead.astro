@@ -1,4 +1,5 @@
 ---
+import Gtag from "@/molecules/Gtag.astro"
 export interface Props {
   title: string;
   description: string;
@@ -37,3 +38,4 @@ const { title, description, image } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+<Gtag/>
