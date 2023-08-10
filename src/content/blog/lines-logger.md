@@ -5,6 +5,8 @@ date: "22 June 2023"
 tags: 
  - frontend
  - logging
+ - javascript
+ - typescript
 ---
 
 Have you faced these issues while developing your web app?
