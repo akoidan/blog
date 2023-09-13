@@ -18,3 +18,13 @@ fix /etc/fstab
 mount root partition, arch-chroot into it, fix bootloader with bootctl install
 this will add linux entry to uefi bootloader in bios
 ```
+
+
+download windows 11 flash drive, boot from it
+go to CLI
+
+> diskpart
+DISKPART> list disk
+DISKPART> select disk 0
+DISKPART> select partition 2
+assign letter=K
