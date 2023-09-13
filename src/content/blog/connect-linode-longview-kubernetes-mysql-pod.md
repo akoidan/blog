@@ -7,7 +7,6 @@ tags:
  - longview
  - linode
  - kubernetes
- - featured
 ---
 
 

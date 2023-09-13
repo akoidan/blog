@@ -7,6 +7,7 @@ tags:
  - logging
  - javascript
  - typescript
+ - featured
 ---
 
 Have you faced these issues while developing your web app?
