@@ -31,4 +31,7 @@ DISKPART> assign letter=K // real disk C
 
 DISKPART> select disk 1
 DISKPART> select partition 3
-assign letter=L // real disk UEFI
+DISKPART> assign letter=L // real disk UEFI
+DISKPART> exit
+
+> bcdboot K:\Windows /s L: /f UEFI
