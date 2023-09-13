@@ -27,4 +27,8 @@ go to CLI
 DISKPART> list disk
 DISKPART> select disk 0
 DISKPART> select partition 2
-assign letter=K
+DISKPART> assign letter=K // real disk C
+
+DISKPART> select disk 1
+DISKPART> select partition 3
+assign letter=L // real disk UEFI
