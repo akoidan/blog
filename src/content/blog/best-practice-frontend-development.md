@@ -5,7 +5,6 @@ date: "13 June 2023"
 tags: 
  - patterns 
  - ecosystem
- - featured
 ---
 How often we all face the code it's impossible to support? But how to write a clean one?
 
