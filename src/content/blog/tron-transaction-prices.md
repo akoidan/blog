@@ -16,12 +16,13 @@ To understand the price of transaction lets break down this article to multiple 
 
 # Transaction structure
 Tron transaction is encoded with protobuf and stored as binary in trongrid. When you call trongrid API you always pass this binary as a hex string (base16 0-9A-F).
-The protobuf structure can be found in npm package @tronscan here node_modules/@tronscan/client/protobuf/core/Tron.proto
+The protobuf structure can be found in npm package @tronscan here `@tronscan/client/protobuf/core/Tron.proto`
 
 There are 2 types of hex data you usually send
  - transaction data
  - transaction signature + transaction data
-If you take a look at @tronscan/client/protobuf/core/Tron.proto class you'll find Transaction class that contains 2 fields.
+
+If you take a look at `@tronscan/client/protobuf/core/Tron.proto` class you'll find Transaction class that contains 2 fields.
  - raw_data (field number 1, type 'raw')
  - signature (field number 2, type 'repeated bytes')
 
@@ -64,6 +65,7 @@ Your transaction will consume exactly the amount of its length. So the less info
  - transaction data (the hex message, 2 hex chars = 1 byte) + 3 bytes of protobuf field
  - signature (65 bytes + 2 bytes of protobuf field start)
  - transaction output (up to 64 bytes)
+
 So trx fee would be (BANDWIDTH_PRICE * TRANSACTION_LENGTH) SUN
  - if this is less than CURRENT_BANDWIDTH, it's free
  - if more than the difference 
