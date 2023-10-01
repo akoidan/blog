@@ -1,6 +1,6 @@
 ---
-title: "Best practices for frontend development"
-description: "Bring separation of concern on your frontend!"
+title: "Separation of concerns for frontend"
+description: "Write clean code for Vue, Angular, React. Placing html and content to templates, logic to javascript and styles to css"
 date: "13 June 2023"
 tags: 
  - patterns 
