@@ -8,21 +8,22 @@ tags:
  - featured
 ---
 
-To understand the price of transaction lets break down this article to multiple parts parts
- - transaction structure and how to parse it with example
- - bandwidth and energy terms
+To understand the price of transaction lets break down this article to multiple parts:
+ - transaction structure and how to parse it
+ - `bandwidth` and `energy` terms
  - resource consumptions
- - example
+ - a simple example
 
 # Transaction structure
 Tron transaction is encoded with protobuf and stored as binary in trongrid. When you call trongrid API you always pass this binary as a hex string (base16 0-9A-F).
-The protobuf structure can be found in npm package @tronscan here `@tronscan/client/protobuf/core/Tron.proto`
+The protobuf structure is available at official tron [github.com/tronprotocol/java-tron](https://github.com/tronprotocol/java-tron) at [protocol/src/main/protos/core
+/Tron.proto](https://github.com/tronprotocol/java-tron/blob/develop/protocol/src/main/protos/core/Tron.proto)
 
 There are 2 types of hex data you usually send
  - transaction data
  - transaction signature + transaction data
 
-If you take a look at `@tronscan/client/protobuf/core/Tron.proto` class you'll find Transaction class that contains 2 fields.
+If you take a look at [Tron.proto](https://github.com/tronprotocol/java-tron/blob/develop/protocol/src/main/protos/core/Tron.proto) class you'll find Transaction class that contains 2 fields.
  - raw_data (field number 1, type 'raw')
  - signature (field number 2, type 'repeated bytes')
 
@@ -30,7 +31,8 @@ If you have to parse such a hex transaction (with signature) you can do the foll
 With signature:
 ```bash
 # pacman -S extra/protobuf
-cd ./node_modules/@tronscan/client/protobuf
+# git clone https://github.com/tronprotocol/java-tron
+cd ./java-tron/protocol/src/main/protos/
 echo 'long-hex-message-string-like-a30174b6c2223' | xxd -r -p - > message.bin
 protoc --decode protocol.Transaction core/Tron.proto < message.bin
 ```
