@@ -64,6 +64,15 @@ I would recommend `dd` them back and resize after, instead of copying files with
 
 You can use `losetup` to load partition table from the file like above.
 
+There are 2 ids that are used in file systems:
+ - Disk GUID. Which is a single for all disk and not relevant to us.
+ - Partition GUID, which is alway a UUID (36 base_16 characters) in GPT
+ - Volume Serial Numer. E.g. NTFS is 16 base_16 characters
+ - There's also a filesystem type id to detect whether it's NTFS or Ext. Not relevant to us
+
+When you copy a partition with `dd` it will clone the partition Volume Serial Number. Which is a desired outcome if we want to keep same configuration of fstab or window disk conf. Also eject or erase your old partition since you don't wanna have 2 identtical Volume IDS in the OS. AS for partition GUID it can have new id, in this case WIndows Bootloader should be fixed which is described below
+
+
 ## Fix windows bootloader
 Inject flash drive with windows, select it from the BIOS and boot from it.
 
@@ -75,12 +84,14 @@ Mount old drive C to letter `K`. In the command below replace `disk 0` and `part
 > diskpart
 DISKPART> list disk
 DISKPART> select disk 0
+DISKPART> list part
 DISKPART> select partition 2
 DISKPART> assign letter=K 
 ```
 Mount UEFI partition to letter `L`.  In the command below replace `disk 0` and `partition 2` to your partition and disk
 ```bash
 DISKPART> select disk 1
+DISKPART> list part
 DISKPART> select partition 3
 DISKPART> assign letter=L
 DISKPART> exit
