@@ -1,15 +1,12 @@
 ---
-title: "How to securely get data from CI"
-description: "You have the CI with secret data and you don't wanna output it to stdout. This provides a way to get this data"
+title: "How to Securely Extract Data from CI"
+description: "In Continuous Integration (CI) environments, like GitHub Actions, handling secret data securely is critical. Directly outputting sensitive information to stdout or logs can lead to exposure. This guide demonstrates a secure method for extracting secrets from GitHub Actions using asymmetric encryption."
 date: "14 August 2024"
 draft: false
 tags: 
  - ssl
  - encryption
 ---
-
-## Overview
-In Continuous Integration (CI) environments, like GitHub Actions, handling secret data securely is critical. Directly outputting sensitive information to stdout or logs can lead to exposure. This guide demonstrates a secure method for extracting secrets from GitHub Actions using asymmetric encryption.
 
 ## Problem
 GitHub Actions restricts direct extraction of secrets to ensure security. However, by transmitting data over HTTPS or encrypting it, we can securely extract the secrets. To avoid exposing encryption keys, we use asymmetric encryption: encrypting the data with a symmetric key, and then encrypting the symmetric key with a public key.
