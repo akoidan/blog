@@ -28,7 +28,7 @@ openssl rsa -pubout -in private_key.pem -out public_key.pem
 ```
 
  - `private_key.pem`: Keep this file secure on your local machine.
- - `public_key.pem`: Commit this file to your repository under scrape/public_key.pem.
+ - `public_key.pem`: Commit this file to your repository under `scrape/public_key.pem`.
 
 ### Step 2: Add a Workflow
 Create a GitHub Actions workflow to encrypt and output the secrets.
@@ -92,7 +92,7 @@ On your local machine, where you have `private_key.pem`, run the following comma
 
 ```bash
 echo YOUR_ENCRYPTED_KEY_B64 |base64 -d > encrypted_key.bin
-cat YOUR_ENCRYPTED_FILE_B64 |base64 -d > encrypted_file.bin
+echo YOUR_ENCRYPTED_FILE_B64 |base64 -d > encrypted_file.bin
 
 openssl rsautl -decrypt -inkey private_key.pem -in encrypted_key.bin -out symmetric_key.bin
 openssl enc -d -aes-256-cbc -in encrypted_file.bin -out decrypted_file.txt -pass file:symmetric_key.bin
