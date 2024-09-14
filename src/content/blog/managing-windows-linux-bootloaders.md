@@ -49,6 +49,13 @@ losetup --show -P -f /mnt/bu/sdX
 ```
 After this command you will have files like `/dev/loop1p1` that you can mount if needed. THey will contain your partition backed up data.
 
+If you need to back up specific files and exclude some of them you have to traverse FS.
+Example of backing up everything in `/mnt/source/*` to `/mnt/target_root/` excluding `/mnt/source/home/andrew`. Note `/mnt/source/` has the trailing slash in order to avoid creating `source` directory in `target_root` and `home/andrew` is relative to source directory.
+
+```bash
+rsync -a --exclude='home/andrew' --links /mnt/source/ /mnt/target_root/
+```
+
 ## Restructure your partitions
 I personally like using `cfdisk`. It's much more intuitive than fdisk, and much more broad than other cli or even GUI applications.
 Do any operation that's required for you.
