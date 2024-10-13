@@ -65,7 +65,7 @@ jobs:
           # Output the encrypted data and key as base64 strings
           echo "YOUR_ENCRYPTED_FILE_B64:"
           cat encrypted_file.bin |base64 -w 0
-          echo "\nYOUR_ENCRYPTED_KEY_B64:"
+          echo -e "\nYOUR_ENCRYPTED_KEY_B64:"
           cat encrypted_key.bin |base64 -w 0
 ```
 
