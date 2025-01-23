@@ -12,8 +12,8 @@ tags:
 Let's review why CORS is required in the first place. Let's say you open [fb.com](https://fb.com) from Chrome. 
 Chrome makes a GET request to fb.com and sends all the cookies it stores for this site.
 
-But if you open [xvideos.com](https://www.xvideos.com), and this site sends a request to fb.com within XHR/form submition, your browser also sends cookies  **associated within fb.com** withing this request. Which means you got authorized, and xvideos can read your fb.com data. We didn't want that thing to happen, ha?
-This is exactly why CORS comes as a saver! And this is why if domains [which you send request from, and which you send request to] are different, browser must send `Origin: https://xvideos.com` header. And your server should return `Access-Control-Allow-Origin: https://xvideos.com`.
+But if you open [malicious.site](https://www.malicious.site), and it makes a request to fb.com within XHR/form submition, your browser also sends cookies  **associated within fb.com** withing this request. Which means you got authorized, and malicious.site can read your fb.com data. We didn't want that thing to happen, ha?
+This is exactly why CORS comes as a saver! And this is why if domains [which you send request from, and which you send request to] are different, browser must send `Origin: https://malicious.site` header. And your server should return `Access-Control-Allow-Origin: https://malicious.site`.
 Keep in mind:
  - Backend should let the request go through, it shouldn't return any errors if you follow Web specification. It's the browser job to restrict access from reading response data.
  - If both origins are the same, your browser might not send `Origin` header in the request. Since it's not cross-origin resource sharing anymore. 
